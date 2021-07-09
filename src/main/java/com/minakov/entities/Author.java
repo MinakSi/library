@@ -11,7 +11,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "authors")
 public class Author {
-
+//TEST
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
