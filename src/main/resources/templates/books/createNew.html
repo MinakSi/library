@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create new book</title>
+</head>
+<body>
+<h2>Book creation</h2>
+<form th:method="POST" th:action="@{/books}" th:object="${book}">
+    <input placeholder="Name" type="text" th:field="*{name}" />
+    <br>
+<!--    <select id="authorsSelection">-->
+<!--        <option value="fff">fff</option>-->
+<!--        <option value="new">add new author</option>-->
+<!--        <option th:each="author : ${allAuthors}" th:value="${author}" th:text="${author}"></option>-->
+<!--    </select>-->
+<!--    <br>-->
+<!--    <input type="text" id="newAuthor" placeholder="New author"/>-->
+<!--    <input type="button" id="otherschool" value="Insert"/>-->
+
+    <input type="submit" value="Submit creation">
+</form>
+<a th:href="@{/books}" >Back</a>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--<script src="../../static/js/main.js" type="text/javascript"></script>  ------ after refactor-->
+<script src="/js/main.js" type="text/javascript"></script>
+</body>
+</html>

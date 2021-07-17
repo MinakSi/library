@@ -27,6 +27,9 @@ public class User {
     @NotEmpty
     private String phone;
 
+    @NotEmpty
+    private String password;
+
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
@@ -34,10 +37,11 @@ public class User {
     public User() {
     }
 
-    public User(String name, String login, String phone, Role role) {
+    public User(String name, String login, String phone, String password, Role role) {
         this.name = name;
         this.login = login;
         this.phone = phone;
+        this.password = password;
         this.role = role;
     }
 
@@ -70,7 +74,16 @@ public class User {
     }
 
     public void setPhone(String phone) {
+
         this.phone = phone;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Role getRole() {
@@ -87,11 +100,12 @@ public class User {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(login, user.login)
-                && Objects.equals(phone, user.phone) && Objects.equals(role, user.role);
+                && Objects.equals(phone, user.phone) && Objects.equals(password, user.password)
+                && Objects.equals(role, user.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, login, phone, role);
+        return Objects.hash(id, name, login, phone, password, role);
     }
 }
