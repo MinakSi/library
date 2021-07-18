@@ -14,33 +14,45 @@
 <body>
 
 <div th:insert="/blocks/userNavBlock :: navPanel"></div>
-<!--<span th:text="${user.login}">-->
+
 <form th:action="@{/registration}" th:method="POST" th:object="${user}">
     <div class="form-group">
         <label for="login">Login</label>
         <input type="text" id="login" th:field="*{login}"
                aria-describedby="emailHelp" placeholder="Login">
+        <p th:each="error: ${#fields.errors('login')}"
+           th:text="${error}">Validation error</p>
     </div>
     <div class="form-group">
         <label for="inputName">Name</label>
         <input type="text" class="form-control" id="inputName"  th:field="*{name}"
                aria-describedby="emailHelp" placeholder="Name">
+        <p th:each="error: ${#fields.errors('name')}"
+           th:text="${error}">Validation error</p>
     </div>
     <div class="form-group">
         <label for="inputPhone">Phone number</label>
         <input type="tel" class="form-control" id="inputPhone" th:field="*{phone}"
                aria-describedby="emailHelp" placeholder="Phone number">
+        <p th:each="error: ${#fields.errors('phone')}"
+           th:text="${error}">Validation error</p>
     </div>
     <div class="form-group">
         <label for="inputPassword">Password</label>
         <input type="password" class="form-control" id="inputPassword" th:field="*{password}"
                placeholder="Password">
+        <p th:each="error: ${#fields.errors('password')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div class="form-group">
+        <label for="inputConfirmPassword">Password</label>
+        <input type="password" class="form-control" id="inputConfirmPassword" th:field="*{confirmPassword}"
+               placeholder="Confirm your password">
+        <p th:each="error: ${#fields.errors('confirmPassword')}"
+           th:text="${error}">Validation error</p>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-<br>
-
-
 
 <!--Scripts-->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

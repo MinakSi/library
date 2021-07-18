@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/books")
 public class BooksController {
@@ -27,26 +29,26 @@ public class BooksController {
     }
 
     @GetMapping()
-    public String showAll(Model model) {
+    public String showAll(HttpSession session, Model model) {
         model.addAttribute("books", bookService.getAllBooks());
         return "books/bookList";
     }
 
     @PostMapping()
-    public String createNewBook(@ModelAttribute Book book) {
+    public String createNewBook(HttpSession session, @ModelAttribute Book book) {
         bookService.createBook(book);
         return "books/success";
     }
 
     @GetMapping("/new")
-    public String startCreation(Model model) {
+    public String startCreation(HttpSession session, Model model) {
         model.addAttribute("book", new Book());
         model.addAttribute("allAuthors", authorService.getAllAuthors());
         return "books/createNew";
     }
 
     @GetMapping("/{id}")
-    public String showDetails(Model model, @PathVariable("id") Long bookId) {
+    public String showDetails(HttpSession session, Model model, @PathVariable("id") Long bookId) {
         if(!bookService.existsById(bookId)){
             return "redirect:/books";
         }

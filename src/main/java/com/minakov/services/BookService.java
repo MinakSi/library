@@ -27,11 +27,12 @@ public class BookService {
     }
 
     public Book getBookById(Long id) {
-        Book book = bookRepository.getById(id);
-        if (book == null) {
-            throw new EntityNotFoundException();
-        }
-        return book;
+       return bookRepository.findAll()
+               .stream()
+               .filter(book -> book.getId().equals(id))
+               .findFirst()
+               .orElse(null);
+
     }
 
     public void createBook(Book book) {

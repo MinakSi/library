@@ -19,8 +19,12 @@
   <br>
   <input placeholder="Password" type="text" th:field="*{password}">
   <br>
+  <span style="color: red;" th:text="${error}"></span>
   <input type="submit" value="Log in">
 </form>
+<br>
+<br>
+<a th:href="@{/registration}">No account yet? Register here</a>
 
 
 
