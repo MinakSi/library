@@ -9,7 +9,6 @@ import javax.validation.constraints.NotEmpty;
 import java.util.Objects;
 
 @Entity
-//one more
 @Table(name = "authors")
 public class Author {
 

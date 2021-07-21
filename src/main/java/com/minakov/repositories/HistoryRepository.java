@@ -1,7 +1,7 @@
 package com.minakov.repositories;
 
 import com.minakov.entities.History;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface HistoryRepository extends CrudRepository<History, Long> {
+public interface HistoryRepository extends JpaRepository<History, Long> {
 }
