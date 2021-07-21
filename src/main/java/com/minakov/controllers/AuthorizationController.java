@@ -1,6 +1,7 @@
 package com.minakov.controllers;
 
 import com.minakov.dto.UserDto;
+import com.minakov.entities.RoleEnum;
 import com.minakov.entities.User;
 import com.minakov.exceptions.ApplicationException;
 import com.minakov.services.UserService;
@@ -26,7 +27,7 @@ public class AuthorizationController {
     }
 
     @GetMapping("/login")
-    public String showLogin(HttpSession session, Model model) {
+    public String showLogin(HttpSession session, Model model) { //todo: if user exists in session -> redirect
         model.addAttribute("user", new User());
         return "authorization/login";
     }
@@ -43,7 +44,7 @@ public class AuthorizationController {
             return "authorization/login";
         }
         session.setAttribute("user", userService.getUserByLogin(user.getLogin()));
-        return "redirect:books";
+        return "redirect:/books";
     }
 
     @GetMapping("/registration")
@@ -58,12 +59,11 @@ public class AuthorizationController {
         try {
             user = userService.registerNewUser(userDto);
         } catch (ApplicationException e) {
-            model.addAttribute("error", e.getMessage());
             model.addAttribute("user", userDto);
             return "authorization/registration";
         }
         session.setAttribute("user", user);
-        return "redirect:books";
+        return "redirect:/books";
     }
 
 }

@@ -11,7 +11,7 @@
     <title>Create new book</title>
 </head>
 <body>
-<div th:insert="/blocks/userNavBlock :: navPanel"></div>
+<div th:insert="/blocks/adminNavBlock :: navPanel"></div>
 <h2>Book creation</h2>
 <form th:method="POST" th:action="@{/books}" th:object="${book}">
     <input placeholder="Name" type="text" th:field="*{name}" />
@@ -30,7 +30,5 @@
 <a th:href="@{/books}" >Back</a>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!--<script src="../../static/js/main.js" type="text/javascript"></script>  ------ after refactor-->
-<script src="/js/main.js" type="text/javascript"></script>
 </body>
 </html>

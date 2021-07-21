@@ -12,9 +12,14 @@ public class SpringCourseraFinalLibraryApplication implements WebMvcConfigurer {
         SpringApplication.run(SpringCourseraFinalLibraryApplication.class, args);
     }
 
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
     }
 
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+////        registry.addInterceptor(new AuthorizationHandlerInterceptor());
+//    }
 }
