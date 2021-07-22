@@ -1,4 +1,4 @@
-package com.minakov.controllers;
+package com.minakov.controllers.customer;
 
 
 import com.minakov.entities.Book;
@@ -17,13 +17,13 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/books")
-public class BooksController {
+public class CustomerBooksController {
 
     private final BookService bookService;
     private final AuthorService authorService;
 
     @Autowired
-    public BooksController(BookService bookService, AuthorService authorService) {
+    public CustomerBooksController(BookService bookService, AuthorService authorService) {
         this.bookService = bookService;
         this.authorService = authorService;
     }

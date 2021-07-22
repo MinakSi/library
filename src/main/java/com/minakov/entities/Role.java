@@ -17,7 +17,7 @@ public class Role {
     private Long id;
 
     @Column(unique = true, nullable = false)
-    private String name = RoleEnum.UNKNOWN.name();
+    private String name = RoleEnum.CUSTOMER.name();
 
     public Role() {
     }

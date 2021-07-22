@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Role Changing</title>
+</head>
+<body>
+<div th:insert="/blocks/adminNavBlock :: navPanel"></div>
+<h1 th:text="${usr.name}"></h1>
+<br>
+<br>
+<form th:method="PATCH" th:action="@{/admin/users/{id}/role(id=${usr.getId()})}">
+    <label>
+        Change the role:
+        <select name="changedRole" th:object="${roleDto}" th:field="*{roleId}">
+            <option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.name}" ></option>
+        </select>
+    </label>
+    <br>
+    <br>
+    <input type="submit" value="Change"/>
+</form>
+</body>
+</html>

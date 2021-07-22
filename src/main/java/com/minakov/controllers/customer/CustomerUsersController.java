@@ -1,4 +1,4 @@
-package com.minakov.controllers;
+package com.minakov.controllers.customer;
 
 import com.minakov.entities.User;
 import com.minakov.services.UserService;
@@ -14,12 +14,12 @@ import java.util.Objects;
 
 @Controller
 @RequestMapping("/user")
-public class CustomerController {
+public class CustomerUsersController {
 
     private final UserService userService;
 
     @Autowired
-    public CustomerController(UserService userService) {
+    public CustomerUsersController(UserService userService) {
         this.userService = userService;
     }
 
@@ -30,6 +30,11 @@ public class CustomerController {
             return "redirect:/books";
         }
         return "customer/user/profile";
+    }
+
+    @GetMapping("/{id}/blocked")
+    public String showBlockedPage(HttpSession session, Model model, @PathVariable("id") Long userId){
+        return "blockedPage";
     }
 
     @GetMapping("/{id}/logout")
