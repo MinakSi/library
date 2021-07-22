@@ -14,6 +14,9 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+/**
+ * Entity for creation table for Books
+ */
 @Entity
 @Table(name = "books")
 public class Book {

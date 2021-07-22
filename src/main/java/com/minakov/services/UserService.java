@@ -2,7 +2,6 @@ package com.minakov.services;
 
 import com.minakov.dto.RoleChangingDto;
 import com.minakov.dto.UserDto;
-import com.minakov.entities.Role;
 import com.minakov.entities.RoleEnum;
 import com.minakov.entities.User;
 import com.minakov.exceptions.ApplicationException;
@@ -12,6 +11,9 @@ import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
+/**
+ * Service class to control Users in DB
+ */
 @Controller
 public class UserService {
 
@@ -34,7 +36,7 @@ public class UserService {
         return userRepository.existsById(id);
     }
 
-    public User getUserById(Long id){
+    public User getUserById(Long id) {
         return userRepository.getById(id);
     }
 
@@ -60,7 +62,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User updateUserRole(Long userId, RoleChangingDto roleChangingDto){
+    public User updateUserRole(Long userId, RoleChangingDto roleChangingDto) {
         User userFromDb = getUserById(userId);
         userFromDb.setRole(roleService.getRoleById(roleChangingDto.getRoleId()));
         return userRepository.save(userFromDb);

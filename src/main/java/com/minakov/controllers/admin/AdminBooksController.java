@@ -3,7 +3,6 @@ package com.minakov.controllers.admin;
 import com.minakov.entities.Book;
 import com.minakov.services.AuthorService;
 import com.minakov.services.BookService;
-import com.minakov.services.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,19 +14,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 
+/**
+ * This controller describes actions that should be performed when
+ * URL matches /admin/books/**
+ * This controller is for users with role 'ADMIN'
+ */
 @Controller
 @RequestMapping("/admin/books")
 public class AdminBooksController {
 
     private final BookService bookService;
     private final AuthorService authorService;
-    private final GenreService genreService;
 
     @Autowired
-    public AdminBooksController(BookService bookService, AuthorService authorService, GenreService genreService) {
+    public AdminBooksController(BookService bookService, AuthorService authorService) {
         this.bookService = bookService;
         this.authorService = authorService;
-        this.genreService = genreService;
     }
 
     @GetMapping()

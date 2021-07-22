@@ -7,6 +7,9 @@ import javax.validation.ConstraintValidatorContext;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Custom validator to check if field matches defined pattern of password
+ */
 public class PasswordValidator implements ConstraintValidator<ValidPassword, String> {
 
     private static final String PASSWORD_PATTERN = ".+";

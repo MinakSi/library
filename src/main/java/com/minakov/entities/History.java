@@ -11,6 +11,9 @@ import javax.persistence.ManyToOne;
 import java.util.Date;
 import java.util.Objects;
 
+/**
+ * Entity for creation table for History
+ */
 @Entity
 public class History {
 

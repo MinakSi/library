@@ -2,7 +2,6 @@ package com.minakov.controllers.customer;
 
 
 import com.minakov.entities.Book;
-import com.minakov.services.AuthorService;
 import com.minakov.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,17 +14,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 
+/**
+ * This controller describes actions that should be performed when
+ * URL matches /books/**
+ * This controller is for users with roles 'CUSTOMER', 'BLOCKED', unregistered users
+ */
 @Controller
 @RequestMapping("/books")
 public class CustomerBooksController {
 
     private final BookService bookService;
-    private final AuthorService authorService;
 
     @Autowired
-    public CustomerBooksController(BookService bookService, AuthorService authorService) {
+    public CustomerBooksController(BookService bookService) {
         this.bookService = bookService;
-        this.authorService = authorService;
     }
 
     @GetMapping()
@@ -42,7 +44,7 @@ public class CustomerBooksController {
 
     @GetMapping("/{id}")
     public String showDetails(HttpSession session, Model model, @PathVariable("id") Long bookId) {
-        if(!bookService.existsById(bookId)){
+        if (!bookService.existsById(bookId)) {
             return "redirect:/books";
         }
         model.addAttribute("book", bookService.getBookById(bookId));

@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
+/**
+ * Service class to control Roles in DB
+ */
 @Controller
 public class RoleService {
 
@@ -17,7 +20,7 @@ public class RoleService {
         this.roleRepository = roleRepository;
     }
 
-    public Role getRoleByName(String roleName){
+    public Role getRoleByName(String roleName) {
         return roleRepository.findAll()
                 .stream()
                 .filter(role -> role.getName().equals(roleName))
@@ -25,11 +28,11 @@ public class RoleService {
                 .orElse(null);
     }
 
-    public List<Role> getAllRoles(){
+    public List<Role> getAllRoles() {
         return roleRepository.findAll();
     }
 
-    public Role getRoleById(Long id){
-        return  roleRepository.getById(id);
+    public Role getRoleById(Long id) {
+        return roleRepository.getById(id);
     }
 }
