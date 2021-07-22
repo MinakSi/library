@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
+/**
+ * Service class to control Authors in DB
+ */
 @Controller
 public class AuthorService {
 
@@ -17,7 +20,7 @@ public class AuthorService {
         this.authorRepository = authorRepository;
     }
 
-    public List<Author> getAllAuthors(){
+    public List<Author> getAllAuthors() {
         return authorRepository.findAll();
     }
 }

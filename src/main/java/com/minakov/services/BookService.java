@@ -5,9 +5,11 @@ import com.minakov.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
+/**
+ * Service class to control Books in DB
+ */
 @Controller
 public class BookService {
 
@@ -22,16 +24,16 @@ public class BookService {
         return bookRepository.findAll();
     }
 
-    public boolean existsById(Long id){
+    public boolean existsById(Long id) {
         return bookRepository.existsById(id);
     }
 
     public Book getBookById(Long id) {
-       return bookRepository.findAll()
-               .stream()
-               .filter(book -> book.getId().equals(id))
-               .findFirst()
-               .orElse(null);
+        return bookRepository.findAll()
+                .stream()
+                .filter(book -> book.getId().equals(id))
+                .findFirst()
+                .orElse(null);
 
     }
 

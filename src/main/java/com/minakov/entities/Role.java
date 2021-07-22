@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Objects;
 
+/**
+ * Entity for creation table for Role
+ */
 @Entity
 @Table(name = "roles")
 public class Role {

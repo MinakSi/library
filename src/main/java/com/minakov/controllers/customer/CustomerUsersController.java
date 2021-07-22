@@ -1,8 +1,6 @@
 package com.minakov.controllers.customer;
 
 import com.minakov.entities.User;
-import com.minakov.services.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,16 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpSession;
 import java.util.Objects;
 
+/**
+ * This controller describes actions that should be performed when
+ * URL matches /user/**
+ * This controller is for users with roles 'CUSTOMER', 'BLOCKED'
+ */
 @Controller
 @RequestMapping("/user")
 public class CustomerUsersController {
-
-    private final UserService userService;
-
-    @Autowired
-    public CustomerUsersController(UserService userService) {
-        this.userService = userService;
-    }
 
     @GetMapping("/{id}")
     public String showProfile(HttpSession session, Model model, @PathVariable("id") Long userId) {
@@ -33,7 +29,7 @@ public class CustomerUsersController {
     }
 
     @GetMapping("/{id}/blocked")
-    public String showBlockedPage(HttpSession session, Model model, @PathVariable("id") Long userId){
+    public String showBlockedPage(HttpSession session, Model model, @PathVariable("id") Long userId) {
         return "blockedPage";
     }
 

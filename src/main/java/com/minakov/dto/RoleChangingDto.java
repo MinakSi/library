@@ -2,6 +2,10 @@ package com.minakov.dto;
 
 import java.util.Objects;
 
+/**
+ * This class is Data Transfer Object.
+ * It is used when an admin wants to change a user's role
+ */
 public class RoleChangingDto {
 
     private Long roleId;

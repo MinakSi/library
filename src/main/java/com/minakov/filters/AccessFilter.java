@@ -16,6 +16,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class is a filter that controls access to specific URLS.
+ */
 public class AccessFilter implements Filter {
 
     private final List<AntPathRequestMatcher> outerPaths = new ArrayList<AntPathRequestMatcher>() {{

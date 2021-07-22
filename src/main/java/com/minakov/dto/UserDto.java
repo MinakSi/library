@@ -8,6 +8,11 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
+/**
+ * This class is Data Transfer Object.
+ * It is used during registration new user.
+ * UserDto can be validated with phone and password
+ */
 @PasswordsMatch
 public class UserDto {
 

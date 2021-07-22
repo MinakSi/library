@@ -10,6 +10,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import java.util.Objects;
 
+/**
+ * Entity for creation table for User
+ */
 @Entity
 @Table(name = "users")
 public class User {

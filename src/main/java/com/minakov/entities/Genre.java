@@ -8,6 +8,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import java.util.Objects;
 
+/**
+ * Entity for creation table for Genre
+ */
 @Entity
 @Table(name = "genres")
 public class Genre {

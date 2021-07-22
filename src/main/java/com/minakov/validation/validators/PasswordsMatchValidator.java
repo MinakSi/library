@@ -6,7 +6,10 @@ import com.minakov.validation.annotations.PasswordsMatch;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class PasswordsMatchValidator implements ConstraintValidator<PasswordsMatch, Object> {
+/**
+ * Custom validator to check if password and its confirmation field match each other in UserDto
+ */
+public class PasswordsMatchValidator implements ConstraintValidator<PasswordsMatch, UserDto> {
 
     @Override
     public void initialize(PasswordsMatch constraintAnnotation) {
@@ -14,8 +17,7 @@ public class PasswordsMatchValidator implements ConstraintValidator<PasswordsMat
     }
 
     @Override
-    public boolean isValid(Object object, ConstraintValidatorContext context) {
-        UserDto userDto = (UserDto) object;
+    public boolean isValid(UserDto userDto, ConstraintValidatorContext context) {
         return userDto.getPassword().equals(userDto.getConfirmPassword());
     }
 }

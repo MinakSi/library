@@ -1,7 +1,6 @@
 package com.minakov.controllers.admin;
 
 import com.minakov.dto.RoleChangingDto;
-import com.minakov.entities.RoleEnum;
 import com.minakov.entities.User;
 import com.minakov.services.RoleService;
 import com.minakov.services.UserService;
@@ -16,6 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 
+/**
+ * This controller describes actions that should be performed when
+ * URL matches /admin/users/**
+ * This controller is for users with role 'ADMIN'
+ */
 @Controller
 @RequestMapping("/admin/users")
 public class AdminUsersController {
@@ -30,7 +34,7 @@ public class AdminUsersController {
     }
 
     @GetMapping()
-    public String showAllUsers(HttpSession session, Model model){
+    public String showAllUsers(HttpSession session, Model model) {
         model.addAttribute("users", userService.getAllUsers());
         return "admin/users/users";
     }
@@ -45,7 +49,7 @@ public class AdminUsersController {
     }
 
     @GetMapping("/{id}/role")
-    public String showRoleChanging(HttpSession session, Model model, @PathVariable("id") Long userId){
+    public String showRoleChanging(HttpSession session, Model model, @PathVariable("id") Long userId) {
         if (!userService.existsById(userId)) {
             return "redirect:/admin/users";
         }
@@ -58,7 +62,7 @@ public class AdminUsersController {
 
     @PatchMapping("/{id}/role")
     public String changeRole(HttpSession session, Model model, @PathVariable("id") Long userId,
-                             @ModelAttribute("roleDto") RoleChangingDto roleChangingDto){
+                             @ModelAttribute("roleDto") RoleChangingDto roleChangingDto) {
         userService.updateUserRole(userId, roleChangingDto);
         return "redirect:/admin/users/{id}";
     }

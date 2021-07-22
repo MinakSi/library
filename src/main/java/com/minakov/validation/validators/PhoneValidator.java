@@ -7,6 +7,9 @@ import javax.validation.ConstraintValidatorContext;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Custom validator to check if field matches defined pattern of phone number
+ */
 public class PhoneValidator implements ConstraintValidator<ValidPhone, String> {
 
     private static final String PHONE_PATTERN = "/^\\+?[0-9]{9,13}$";
