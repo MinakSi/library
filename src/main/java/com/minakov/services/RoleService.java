@@ -5,6 +5,8 @@ import com.minakov.repositories.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import java.util.List;
+
 @Controller
 public class RoleService {
 
@@ -21,5 +23,13 @@ public class RoleService {
                 .filter(role -> role.getName().equals(roleName))
                 .findFirst()
                 .orElse(null);
+    }
+
+    public List<Role> getAllRoles(){
+        return roleRepository.findAll();
+    }
+
+    public Role getRoleById(Long id){
+        return  roleRepository.getById(id);
     }
 }

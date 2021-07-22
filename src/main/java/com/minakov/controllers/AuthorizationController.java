@@ -27,7 +27,7 @@ public class AuthorizationController {
     }
 
     @GetMapping("/login")
-    public String showLogin(HttpSession session, Model model) { //todo: if user exists in session -> redirect
+    public String showLogin(HttpSession session, Model model) {
         model.addAttribute("user", new User());
         return "authorization/login";
     }
